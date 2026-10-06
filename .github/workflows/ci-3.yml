@@ -1,0 +1,29 @@
+name: CI Pipeline 3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tedsst:
+    name: Build & Test
+    runs-on: ubsadfuntu-latest
+
+    strategy:
+      matrix:
+        node-versiasdfon: [20.x, 22.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm cisadfas
+
+      - name: Run automated tests
+        run: npm test
